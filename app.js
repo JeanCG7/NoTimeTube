@@ -8,6 +8,8 @@ const mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/user.route');
+const authRouter = require('./routes/auth.route');
+const videosRouter = require('./routes/videos.route');
 
 let dev_db_url = 'mongodb://<jeantube>:<tube96210201>@ds149806.mlab.com:49806/notimetube';
 
@@ -26,6 +28,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
+app.use('/', authRouter);
+app.use('/videos', videosRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
