@@ -1,12 +1,18 @@
 var createError = require('http-errors');
 var express = require('express');
+
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const mongoose = require('mongoose');
 
 var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var usersRouter = require('./routes/user.route');
 
+let dev_db_url = 'mongodb://<jeantube>:<tube96210201>@ds149806.mlab.com:49806/notimetube';
+
+let mongoDB = process.env.mongoDB_URI || dev_db_url;
+mongoose.connect(mongoDB, {useNewUrlParser: true});
 var app = express();
 
 // view engine setup
