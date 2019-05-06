@@ -1,48 +1,51 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>
-        {{#if title}}
-            {{title}} - NoTimeTube
-        {{else}}
-            NoTimeTube
-        {{/if}}
-    </title>
-    <!-- UIkit CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.4/css/uikit.min.css" />
-</head>
-<body>
-    <div uk-grid>
-        <div class="uk-width-1-2">
-            <form action="/login" method="post">
-                <fieldset class="uk-fieldset">
+{{#> layout/base title="Login" }}
 
-                    <legend class="uk-legend">Entrar</legend>
-                    <div class="uk-margin">
-                        <label class="uk-form-label" for="email">Email</label>
-                        <div class="uk-form-controls">
-                            <input class="uk-input" id="email" type="email" placeholder="email@email.com">
-                        </div>
-                    </div>
+  {{!-- Let's add a second stylesheet for this layout. --}}
+  {{!-- {{#*inline "head-block"}}
+    <link rel="stylesheet" href="some-other-styles.css">
+  {{/inline}} --}}
 
-                    <div class="uk-margin">
-                        <label class="uk-form-label" for="password">Senha</label>
-                        <div class="uk-form-controls">
-                            <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
-                            <input class="uk-input" id="password" type="password" placeholder="Senha">
-                        </div>
-                    </div>
-                    <button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom" type="submit">Entrar</button>
-                </fieldset>
-            </form>
+  {{!-- Let's change the hero image for this layout. --}}
+  {{#*inline "container-block"}}
+    <div class="uk-section uk-light">
+        <div class="uk-container">
+            <div uk-grid>
+                <div class="uk-width-1-2">
+                    <form action="/login" method="post">
+                        <fieldset class="uk-fieldset">
+
+                            <legend class="uk-legend">Entrar</legend>
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="email">Email</label>
+                                <div class="uk-form-controls">
+                                    <input class="uk-input" id="email" type="email" placeholder="email@email.com">
+                                </div>
+                            </div>
+
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="password">Senha</label>
+                                <div class="uk-form-controls">
+                                    <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
+                                    <input class="uk-input" id="password" type="password" placeholder="Senha">
+                                </div>
+                            </div>
+                            <button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom" type="submit">Entrar</button>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
+  {{/inline}}
 
-    <!-- UIkit JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.4/js/uikit.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.4/js/uikit-icons.min.js"></script>
-</body>
-</html>
+  {{!-- Let's override the "footer-block" content.
+  {{#*inline "footer-block"}}
+    <p>We are now overriding the default "footer-block" content with this content.</p>
+  {{/inline}} --}}
+
+  {{!-- Let's add a script for this layout. --}}
+  {{!-- {{#*inline "scripts-block"}}
+    <script src="new-script.js"></script>
+  {{/inline}} --}}
+
+{{/layout/base}}
