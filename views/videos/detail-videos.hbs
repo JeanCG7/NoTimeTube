@@ -1,27 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>
-        {{#if title}}
-            {{title}} - NoTimeTube
-        {{else}}
-            NoTimeTube
-        {{/if}}
-    </title>
-    <!-- UIkit CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.4/css/uikit.min.css" />
-</head>
-<body>
-    <div uk-grid>
-        <div class="uk-width-1-2">
-        </div>
+{{#> layout/base title="Login" }}
+  {{#*inline "container-block"}}
+    <div class="uk-width-auto">
+        <video loop muted playsinline uk-video="autoplay: inview">
+            <source src="https://quirksmode.org/html5/videos/big_buck_bunny.mp4" type="video/mp4">
+            <source src="https://quirksmode.org/html5/videos/big_buck_bunny.ogv" type="video/ogg">
+        </video>
     </div>
-
-    <!-- UIkit JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.4/js/uikit.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.4/js/uikit-icons.min.js"></script>
-</body>
-</html>
+  {{/inline}}
+{{/layout/base}}

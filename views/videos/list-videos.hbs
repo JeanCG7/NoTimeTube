@@ -1,20 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>
-        {{#if title}}
-            {{title}} - NoTimeTube
-        {{else}}
-            NoTimeTube
-        {{/if}}
-    </title>
-    <!-- UIkit CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.4/css/uikit.min.css" />
-</head>
-<body>
+{{#> layout/base title="Login" }}
+  {{#*inline "container-block"}}
     <div class="uk-child-width-1-4 uk-grid-small uk-text-center" uk-grid>
         <div>
             <div class="uk-card uk-card-default uk-card-body">Item</div>
@@ -32,9 +17,5 @@
             <div class="uk-card uk-card-default uk-card-body">Item</div>
         </div>
     </div>
-
-    <!-- UIkit JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.4/js/uikit.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.4/js/uikit-icons.min.js"></script>
-</body>
-</html>
+  {{/inline}}
+{{/layout/base}}

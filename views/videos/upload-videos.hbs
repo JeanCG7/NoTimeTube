@@ -1,21 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>
-        {{#if title}}
-            {{title}} - NoTimeTube
-        {{else}}
-            NoTimeTube
-        {{/if}}
-    </title>
-    <!-- UIkit CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.4/css/uikit.min.css" />
-</head>
-<body>
-    
+{{#> layout/base title="Login" }}
+  {{#*inline "container-block"}}
     <div class="js-upload uk-placeholder uk-text-center">
         <span uk-icon="icon: cloud-upload"></span>
         <span class="uk-text-middle">Attach binaries by dropping them here or</span>
@@ -87,9 +71,5 @@
         });
 
     </script>
-
-    <!-- UIkit JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.4/js/uikit.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.4/js/uikit-icons.min.js"></script>
-</body>
-</html>
+  {{/inline}}
+{{/layout/base}}
