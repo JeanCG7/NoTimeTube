@@ -13,8 +13,6 @@ var usersRouter = require('./routes/user.route');
 const authRouter = require('./routes/auth.route');
 const videosRouter = require('./routes/videos.route');
 
-let dev_db_url = 'mongodb://<jeantube>:<tube96210201>@ds149806.mlab.com:49806/notimetube';
-
 let dev_db_url = require('./mongooseConfig').url;
 let mongoDB = dev_db_url;
 mongoose.connect(mongoDB, {useNewUrlParser: true}).catch((reason) => {

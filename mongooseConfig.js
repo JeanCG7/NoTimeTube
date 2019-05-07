@@ -1,1 +1,1 @@
-module.exports = {  url:'mongodb://user:password@ds149806.mlab.com:49806/notimetube' };
+module.exports = {  url:'mongodb://jeantube:abobrinha321@ds149806.mlab.com:49806/notimetube' };
