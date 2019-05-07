@@ -1,0 +1,33 @@
+{{#> layout/base title="Login" }}
+  {{#*inline "container-block"}}
+    <div class="uk-section uk-light">
+        <div class="uk-container">
+            <div uk-grid>
+                <div class="uk-width-1-2">
+                    <form action="/login" method="post">
+                        <fieldset class="uk-fieldset">
+
+                            <legend class="uk-legend">Entrar</legend>
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="email">Email</label>
+                                <div class="uk-form-controls">
+                                    <input class="uk-input" id="email" type="email" placeholder="email@email.com">
+                                </div>
+                            </div>
+
+                            <div class="uk-margin">
+                                <label class="uk-form-label" for="password">Senha</label>
+                                <div class="uk-form-controls">
+                                    <span class="uk-form-icon uk-form-icon-flip" uk-icon="icon: lock"></span>
+                                    <input class="uk-input" id="password" type="password" placeholder="Senha">
+                                </div>
+                            </div>
+                            <button class="uk-button uk-button-primary uk-width-1-1 uk-margin-small-bottom" type="submit">Entrar</button>
+                        </fieldset>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+  {{/inline}}
+{{/layout/base}}

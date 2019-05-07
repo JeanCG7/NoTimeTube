@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      {{#if title}}
+          {{title}} - NoTimeTube
+      {{else}}
+          NoTimeTube
+      {{/if}}
+    </title>
+    <link rel='stylesheet' href='../../../public/stylesheets/style.css' />
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.4/css/uikit.min.css" />
+    {{#> head-block}}
+    {{/head-block}}
+  </head>
+  <body>
+    <div class="uk-section-primary uk-preserve-color">
+      {{#> navbar-block}}
+        {{> layout/navbar }}
+      {{/navbar-block}}
+      {{#> container-block }}
+      {{/container-block}}
+      <footer>
+        {{#> footer-block}}
+          {{> layout/footer }}
+        {{/footer-block}}
+      </footer>
+    </div>
+    <!-- UIkit JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.4/js/uikit.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.4/js/uikit-icons.min.js"></script>
+    {{#> scripts-block}}
+    {{/scripts-block}}
+  </body>
+</html>
