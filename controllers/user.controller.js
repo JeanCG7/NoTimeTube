@@ -1,14 +1,15 @@
 const User = require('../models/user.model');
 
-exports.create = (req, res) => {
+exports.register = (req, res) => {
     let user = new User({
-        email: req.body.email,
-        password:  req.body.price
+        name: req.body.name,
+        emailAddress:  req.body.emailAddress
     });
 
+    user.setPassword(req.body.password);
     user.save((err) => {
         if(err) 
             return err;
-        res.send('User Created successfully');
+        console.log('User created successfully')
     });
 }

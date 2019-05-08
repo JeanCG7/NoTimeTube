@@ -1,17 +1,34 @@
 const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const crypto = require('crypto');
 
-let UserSchema = new Schema({
+let UserSchema = mongoose.Schema({
     name: String,
     emailAddress:{
         type: String,
         required: true,
         unique: true,
     },
-    password: {
+    hash: {
         type: String,
         required: true
-    }
+    },
+    salt: {
+        type: String,
+        required: true
+    } 
 });
 
-module.exports = mongoose.model('User', UserSchema);
+UserSchema.methods.setPassword = function(password) {
+    this.salt = crypto.randomBytes(16).toString('hex'); 
+     
+    this.hash = crypto.pbkdf2Sync(password, this.salt,  
+       1000, 64, `sha512`).toString(`hex`); 
+};
+
+UserSchema.methods.validPassword = function(password) {
+    var passwordHash = crypto.pbkdf2Sync(password,  
+    this.salt, 1000, 64, `sha512`).toString(`hex`); 
+    return this.hash === passwordHash; 
+}; 
+
+const User = module.exports = mongoose.model('User', UserSchema);

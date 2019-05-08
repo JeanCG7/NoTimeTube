@@ -1,10 +1,11 @@
 var express = require('express');
 var router = express.Router();
 
-const user_controller = require('../controllers/user.controller');
+const User = require('../models/user.model');
+const userController = require('../controllers/user.controller');
 /* GET users listing. */
 
-router.post('/register', user_controller.create);
+router.post('/register', userController.register);
 
 router.get('/register', function (req, res) {
     res.render('auth/register');
