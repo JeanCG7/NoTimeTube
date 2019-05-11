@@ -1,12 +1,14 @@
 var express = require('express');
 var router = express.Router();
 
-router.get('/', function(req, res) {
+const auth = require('../utils/auth');
+
+router.get('/', auth.required, function(req, res) {
     res.render('videos/list-videos');
-  });
+});
 
 router.get('/upload', function(req, res) {
-  res.render('videos/upload-videos');
+    res.render('videos/upload-videos');
 });
 
 router.get('/search', function(req, res) {
