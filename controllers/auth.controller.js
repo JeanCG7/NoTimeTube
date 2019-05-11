@@ -33,7 +33,7 @@ exports.login = (req, res, next) => {
     }
     if (passportUser) {
       const user = passportUser;
-      user.token = passportUser.generateJWT();
+      user.token = user.generateJWT();
 
       res.cookie('currentUser', user.toAuthJSON(), {httpOnly: true})
           .cookie('token', user.token, {httpOnly: true})
@@ -59,8 +59,9 @@ exports.current = (req, res) => {
 };
 
 exports.logout = (req, res) => {
+  req.logout();
   res.clearCookie('token')
       .clearCookie('currentUser')
       .status(200)
-      .redirect('/login');
+      .redirect('/');
 };
