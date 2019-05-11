@@ -35,12 +35,13 @@ exports.login = (req, res, next) => {
       const user = passportUser;
       user.token = passportUser.generateJWT();
 
-      res.cookie('user', user.toAuthJSON(), {httpOnly: true})
+      res.cookie('currentUser', user.toAuthJSON(), {httpOnly: true})
           .cookie('token', user.token, {httpOnly: true})
           .redirect('/');
     }
 
-    return res.sendStatus(400);
+    return res.status(400)
+        .redirect('/login');
   })(req, res, next);
 };
 
@@ -55,4 +56,11 @@ exports.current = (req, res) => {
 
         return res.json({user: user.toAuthJSON()});
       });
+};
+
+exports.logout = (req, res) => {
+  res.clearCookie('token')
+      .clearCookie('currentUser')
+      .status(200)
+      .redirect('/login');
 };

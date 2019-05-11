@@ -10,15 +10,17 @@ const authController = require('../controllers/auth.controller');
 router.post('/register', auth.optional, userController.register);
 
 router.get('/register', auth.optional, function(req, res) {
-    res.render('auth/register');
+  res.render('auth/register');
 });
 
 router.get('/login', auth.optional, function(req, res) {
-    res.render('auth/login');
+  res.render('auth/login');
 });
 
 router.post('/login', auth.optional, authController.login);
 
 router.get('/current', auth.optional, authController.current);
+
+router.get('/logout', auth.optional, authController.logout);
 
 module.exports = router;
