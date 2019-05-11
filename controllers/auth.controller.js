@@ -26,7 +26,7 @@ exports.login = (req, res, next) => {
     successRedirect: '/',
     failureRedirect: '/login',
     successFlash: 'Welcome!',
-    failureFlash: 'Invalid username or password.'
+    failureFlash: 'Invalid username or password.',
   }, (err, passportUser, info) => {
     if (err) {
       return next(err);
@@ -34,10 +34,10 @@ exports.login = (req, res, next) => {
     if (passportUser) {
       const user = passportUser;
       user.token = passportUser.generateJWT();
-      res.redirect('/');
 
-
-      return res.json({user: user.toAuthJSON()});
+      res.cookie('user', user.toAuthJSON(), {httpOnly: true})
+          .cookie('token', user.token, {httpOnly: true})
+          .redirect('/');
     }
 
     return res.sendStatus(400);

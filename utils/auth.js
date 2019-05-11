@@ -1,26 +1,26 @@
 const jwt = require('express-jwt');
 
-const getTokenFromHeaders = (req) => {
-    const { headers: { authorization } } = req;
+const getTokenFromCookie = (req) => {
+  const {cookies: {token}} = req;
 
-    if (authorization && authorization.split(' ')[0] === 'Token') {
-        return authorization.split(' ')[1];
-    }
-    return null;
+  if (token) {
+    return token;
+  }
+  return null;
 };
 
 const auth = {
-    required: jwt({
-        secret: 'secret',
-        userProperty: 'payload',
-        getToken: getTokenFromHeaders,
-    }),
-    optional: jwt({
-        secret: 'secret',
-        userProperty: 'payload',
-        getToken: getTokenFromHeaders,
-        credentialsRequired: false,
-    }),
+  required: jwt({
+    secret: process.env.SECRET,
+    userProperty: 'payload',
+    getToken: getTokenFromCookie,
+  }),
+  optional: jwt({
+    secret: process.env.SECRET,
+    userProperty: 'payload',
+    getToken: getTokenFromCookie,
+    credentialsRequired: false,
+  }),
 };
 
 module.exports = auth;
