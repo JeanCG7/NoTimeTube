@@ -8,27 +8,21 @@ const VideoSchema = mongoose.Schema({
         type: String,
         required: true
     },
+    description: {
+        type: String
+    },
     uploadDate: {
         type: Date,
         required: true
     },
     uploadUser: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
+        type: mongoose.Schema.Types.Object,
+        ref: 'Users'
     },
     file: {
         type: mongoose.Schema.Types.Object, 
         ref: 'GFS'
       }
 });
-
-
-
-VideoSchema.methods.upload = function() {
-  console.log('aqui');
-    upload.single('file'), (req, res) => {
-            res.json({ file: req.file });
-    }
-}
 
 module.exports = mongoose.model('Video', VideoSchema);

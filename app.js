@@ -26,11 +26,16 @@ const conn = mongoose.createConnection(mongoDB, {useNewUrlParser: true});
 
 let gfs;
 
-conn.once('open', () => {
-  //Inicializando a stream de upload
-  gfs = Grid(conn.db, mongoose.mongo);
-  gfs.collection('videos')
+mongoose.connect(mongoDB, {useNewUrlParser: true}).catch((reason) => {
+  
+  console.log('Unable to connect to the mongodb instance. Error: ', reason);
 });
+
+
+  //Inicializando a stream de upload
+gfs = Grid(mongoose.connection, mongoose.mongo);
+gfs.collection('files')
+
 
 const app = express();
 

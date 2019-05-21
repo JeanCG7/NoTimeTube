@@ -14,9 +14,7 @@ router.get('/upload', function(req, res) {
   res.render('videos/upload-videos');
 });
 
-router.post('/upload', Uploader().single('file'), (req, res) => {
-  res.json({ file: req.file });
-});
+router.post('/upload', Uploader().single('file'), videoController.save);
 
 router.get('/search', function(req, res) {
   res.render('videos/search-videos');

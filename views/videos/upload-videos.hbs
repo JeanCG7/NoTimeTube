@@ -1,6 +1,23 @@
 {{#> layout/base title="Upload" }}
   {{#*inline "container-block"}}
     <form action="/videos/upload" method="post" enctype="multipart/form-data">
+      <fieldset class="uk-fieldset">
+          <legend class="uk-legend">Fazer upload de vídeo</legend>
+
+          <div class="uk-margin">
+              <label class="uk-form-label" for="name">Nome</label>
+              <div class="uk-form-controls">
+                  <input class="uk-input" id="name" name="name" type="text" placeholder="Nome do vídeo">
+              </div>
+          </div>
+
+          <div class="uk-margin">
+              <label class="uk-form-label" for="description">Descrição</label>
+              <div class="uk-form-controls">
+                  <input class="uk-input" id="description" name="description" type="text" placeholder="Descrição do vídeo">
+              </div>
+          </div>
+        </fieldset>
         <div class="uk-form-file" uk-form-custom>
             <input class="uk-form-file" type="file" name="file" accept="video/*">
             <label for="filel">Escolha seu vídeo</label>

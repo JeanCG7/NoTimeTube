@@ -17,7 +17,7 @@ function Uploader(res, res, next) {
             const filename = buf.toString('hex') + path.extname(file.originalname);
             const fileInfo = {
                 filename: filename,
-                bucketName: 'videos'
+                bucketName: 'files'
             };
             resolve(fileInfo);
             });
