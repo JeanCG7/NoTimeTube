@@ -11,7 +11,9 @@ exports.register = (req, res) => {
     if (err) {
       return err;
     }
-    console.log('User created successfully');
+    res
+        .status(200)
+        .redirect('/');
   });
 };
 
