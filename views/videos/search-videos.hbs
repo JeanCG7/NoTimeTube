@@ -1,27 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>
-        {{#if title}}
-            {{title}} - NoTimeTube
-        {{else}}
-            NoTimeTube
-        {{/if}}
-    </title>
-    <!-- UIkit CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.4/css/uikit.min.css" />
-</head>
-<body>
-    <div uk-grid>
-        <div class="uk-width-expand"></div>
-        <div class="uk-width-auto"></div>
-    </div>
-
-    <!-- UIkit JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.4/js/uikit.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.4/js/uikit-icons.min.js"></script>
-</body>
-</html>
+{{#> layout/base title="Pesquisa" }}
+  {{#*inline "container-block"}}
+    {{#if videos}}
+      <div class="uk-child-width-1-4 uk-grid-small uk-text-center" uk-grid>
+      {{#each videos}}
+        <a class="uk-link-muted" href="/watch?v={{this._id}}">
+            <div class="uk-card uk-card-default uk-card-body">
+              <img width="140" height="160" alt="Player" data-src="http://localhost:3000/images/player.png" uk-img>
+            </div>
+            <p>
+              {{this.name}}
+            </p>
+        </a>
+      {{/each}}
+      </div>
+    {{else}}
+        Sem Video
+    {{/if}}
+  {{/inline}}
+{{/layout/base}}

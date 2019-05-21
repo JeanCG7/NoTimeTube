@@ -1,21 +1,20 @@
-{{#> layout/base title="Login" }}
+{{#> layout/base title="Videos" }}
   {{#*inline "container-block"}}
-    <div class="uk-child-width-1-4 uk-grid-small uk-text-center" uk-grid>
-        <div>
-            <div class="uk-card uk-card-default uk-card-body">Item</div>
-        </div>
-        <div>
-            <div class="uk-card uk-card-default uk-card-body">Item</div>
-        </div>
-        <div>
-            <div class="uk-card uk-card-default uk-card-body">Item</div>
-        </div>
-        <div>
-            <div class="uk-card uk-card-default uk-card-body">Item</div>
-        </div>
-        <div>
-            <div class="uk-card uk-card-default uk-card-body">Item</div>
-        </div>
-    </div>
+    {{#if videos}}
+      <div class="uk-child-width-1-4 uk-grid-small uk-text-center" uk-grid>
+      {{#each videos}}
+        <a class="uk-link-muted" href="/watch?v={{this._id}}">
+            <div class="uk-card uk-card-default uk-card-body">
+              <img width="140" height="160" alt="Player" data-src="http://localhost:3000/images/player.png" uk-img>
+            </div>
+            <p>
+              {{this.name}}
+            </p>
+        </a>
+      {{/each}}
+      </div>
+    {{else}}
+        Sem Video
+    {{/if}}
   {{/inline}}
 {{/layout/base}}

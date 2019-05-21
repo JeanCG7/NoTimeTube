@@ -20,21 +20,21 @@ const usersRouter = require('./routes/user.route');
 const authRouter = require('./routes/auth.route');
 const videosRouter = require('./routes/videos.route');
 
-const dev_db_url = require('./mongooseConfig').url;
-const mongoDB = dev_db_url;
-const conn = mongoose.createConnection(mongoDB, {useNewUrlParser: true});
+const conn = mongoose.createConnection(process.env.DB_URL);
 
 let gfs;
 
-mongoose.connect(mongoDB, {useNewUrlParser: true}).catch((reason) => {
-  console.log('Unable to connect to the mongodb instance. Error: ', reason);
+mongoose
+    .connect(process.env.DB_URL, {useNewUrlParser: true})
+    .catch((reason) => {
+      console.log('Unable to connect to the mongodb instance. Error: ', reason);
+    });
+
+conn.once('open', () => {
+  // Init stream
+  gfs = Grid(conn.db, mongoose.mongo);
+  gfs.collection('files');
 });
-
-
-// Inicializando a stream de upload
-gfs = Grid(mongoose.connection, mongoose.mongo);
-gfs.collection('files');
-
 
 const app = express();
 
@@ -58,7 +58,7 @@ app.use(session({secret: process.env.SECRET, cookie: {maxAge: 60000}, resave: fa
 
 app.use('/', indexRouter);
 app.use('/', authRouter);
-app.use('/videos', videosRouter);
+app.use('/', videosRouter);
 app.use('/users', usersRouter);
 
 // catch 404 and forward to error handler
