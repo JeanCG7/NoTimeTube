@@ -1,9 +1,9 @@
 {{#> layout/base title="Upload" }}
   {{#*inline "container-block"}}
-    <form action="\upload" method="post">
-        <div class="js-upload" uk-form-custom>
-            <input type="file" accept="video/*">
-            <button class="uk-button uk-button-default" type="button" tabindex="-1">Select</button>
+    <form action="/videos/upload" method="post" enctype="multipart/form-data">
+        <div class="uk-form-file" uk-form-custom>
+            <input class="uk-form-file" type="file" name="file" accept="video/*">
+            <label for="filel">Escolha seu vídeo</label>
         </div>
         <button type="submit" class="uk-button uk-button-default">Enviar</button>
     </form>

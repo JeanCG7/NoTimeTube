@@ -1,3 +1,5 @@
+const Uploader = require('../utils/uploader');
+
 const express = require('express');
 const router = express.Router();
 
@@ -12,7 +14,9 @@ router.get('/upload', function(req, res) {
   res.render('videos/upload-videos');
 });
 
-router.post('/upload', videoController.upload);
+router.post('/upload', Uploader().single('file'), (req, res) => {
+  res.json({ file: req.file });
+});
 
 router.get('/search', function(req, res) {
   res.render('videos/search-videos');

@@ -7,6 +7,9 @@ const logger = require('morgan');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const hbs = require('hbs');
+const Grid = require('gridfs-stream');
+const methodOverride = require('method-override');
+
 require('dotenv-safe').load();
 
 const passport = require('passport');
@@ -19,9 +22,16 @@ const videosRouter = require('./routes/videos.route');
 
 const dev_db_url = require('./mongooseConfig').url;
 const mongoDB = dev_db_url;
-mongoose.connect(mongoDB, {useNewUrlParser: true}).catch((reason) => {
-  console.log('Unable to connect to the mongodb instance. Error: ', reason);
+const conn = mongoose.createConnection(mongoDB, {useNewUrlParser: true});
+
+let gfs;
+
+conn.once('open', () => {
+  //Inicializando a stream de upload
+  gfs = Grid(conn.db, mongoose.mongo);
+  gfs.collection('videos')
 });
+
 const app = express();
 
 // view engine setup
@@ -34,6 +44,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
+app.use(methodOverride('_method'));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Passport config
