@@ -37,7 +37,6 @@ exports.detail = (req, res) => {
 
 exports.search = (req, res) => {
   const search = req.query.search;
-  debugger
   Video.find({'name': {$regex: search}})
       .then((videos) => {
         if (!videos || videos.length === 0) {

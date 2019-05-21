@@ -1,4 +1,4 @@
-const Uploader = require('../utils/uploader');
+const uploader = require('../utils/uploader');
 
 const express = require('express');
 const router = express.Router();
@@ -12,7 +12,7 @@ router.get('/videos/upload', auth.optional, function(req, res) {
   res.render('videos/upload-videos');
 });
 
-router.post('/videos/upload', Uploader().single('file'), videoController.save);
+router.post('/videos/upload', auth.required, uploader().single('file'), videoController.save);
 
 router.get('/videos/search', auth.optional, videoController.search);
 
